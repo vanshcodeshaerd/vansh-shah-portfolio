@@ -121,7 +121,7 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .hch[data-space]{display:block;height:.1em}
 .hrole{margin-top:1.6rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac)}
 .hcopy{color:var(--mt);font-size:.95rem;line-height:1.85;max-width:520px;margin:1.3rem auto 0}
-.hcopy .wch{display:inline-block;filter:blur(8px);opacity:0;transform:translateY(8px);transition:filter .6s ease-out,opacity .6s ease-out,transform .6s ease-out}
+.hcopy .wch{display:inline-block;filter:blur(8px);opacity:0;transform:translateY(8px);transition:filter .6s ease-out,opacity .6s ease-out,transform .6s ease-out;white-space:pre}
 .hcopy .wch.v{filter:blur(0);opacity:1;transform:translateY(0)}
 .hbtns{display:flex;align-items:center;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-top:2.4rem}
 
@@ -173,7 +173,7 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .ab-photo-wrap{position:relative;flex-shrink:0}
 .ab-blob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:130%;height:130%;background:var(--ac);border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;opacity:.12;animation:blob-morph 8s ease-in-out infinite;filter:blur(2px)}
 @keyframes blob-morph{0%,100%{border-radius:30% 70% 70% 30% / 30% 30% 70% 70%}25%{border-radius:58% 42% 75% 25% / 76% 46% 54% 24%}50%{border-radius:50% 50% 33% 67% / 55% 27% 73% 45%}75%{border-radius:33% 67% 58% 42% / 63% 68% 32% 37%}}
-.ab-photo{width:clamp(180px,22vw,300px);height:clamp(180px,22vw,300px);border-radius:50%;overflow:hidden;position:relative;z-index:1;border:3px solid rgba(202,255,0,.3);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.ab-photo{width:clamp(240px,30vw,400px);height:clamp(240px,30vw,400px);border-radius:50%;overflow:hidden;position:relative;z-index:1;border:4px solid rgba(202,255,0,.45);box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 40px rgba(202,255,0,.12)}
 .ab-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .ab-intro{flex:1}
 .ab-greeting{font-family:var(--fh);font-size:clamp(2.8rem,6vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:1.2rem}
@@ -251,7 +251,7 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .pc-desc{font-size:.83rem;color:var(--mt);line-height:1.7;margin-bottom:1.2rem}
 
 /* ── JOURNEY (horizontal scroll timeline) ── */
-#journey{position:relative;height:250vh}
+#journey{position:relative;height:calc(100vh + 80vw)}
 .j-pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
 .j-header{position:absolute;top:3rem;left:4rem;z-index:2}
 .j-header .sl{margin-bottom:.8rem}
@@ -264,7 +264,7 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .j-period{font-size:1.4vw;color:var(--mt);letter-spacing:.05em}
 .j-line-wrap{position:absolute;top:50%;left:0;width:100%;display:flex;align-items:center;transform:translateY(-50%);z-index:1}
 .j-dot-end{width:.8vw;height:.8vw;border-radius:50%;background:var(--ac);flex-shrink:0}
-.j-line{height:2px;background:var(--ac);width:0%;transition:none}
+.j-line{height:2px;background:var(--ac);width:0%;transition:width .15s ease-out}
 .j-top-row,.j-bottom-row{position:relative;height:50%;display:flex;align-items:stretch}
 .j-top-row{padding-top:2vw}
 .j-bottom-row{padding-bottom:2vw}
@@ -298,6 +298,19 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .ex-tags{display:flex;flex-wrap:wrap;gap:.5rem}
 .ex-tag{font-size:.67rem;padding:.25rem .75rem;border:1px solid var(--bd);color:var(--mt);letter-spacing:.1em;text-transform:uppercase;transition:border-color .2s,color .2s}
 .ex-tag:hover{border-color:var(--ac);color:var(--ac)}
+
+/* ── TRY APPS ──────────────────────────── */
+.apps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
+.app-card{border:1px solid var(--bd);border-radius:12px;padding:2rem;transition:border-color .3s,transform .3s var(--ease-expo),box-shadow .3s}
+.app-card:hover{border-color:var(--ac);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.app-emoji{font-size:2.5rem;margin-bottom:1rem}
+.app-name{font-family:var(--fh);font-size:1.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.4rem}
+.app-desc{font-size:.85rem;color:var(--mt);line-height:1.7;margin-bottom:1.5rem}
+.app-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ac);border:1px solid var(--ac);padding:.6rem 1.5rem;border-radius:6px;transition:background .25s,color .25s}
+.app-link:hover{background:var(--ac);color:#0a0a0a}
+.app-badge{display:inline-block;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;margin-bottom:.8rem}
+.app-badge.live{background:rgba(202,255,0,.15);color:var(--ac)}
+.app-badge.soon{background:rgba(255,255,255,.08);color:var(--mt)}
 
 /* ── QUOTE ──────────────────────────────── */
 .qt-sec{padding:8rem 4rem;border-top:1px solid var(--bd);text-align:center;position:relative;overflow:hidden}
@@ -348,11 +361,12 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
   #cur,#cur-r{display:none}
   body{cursor:auto}
   .ab-hero{flex-direction:column;gap:2.5rem;text-align:center}
-  .ab-photo{width:clamp(160px,45vw,220px);height:clamp(160px,45vw,220px)}
+  .ab-photo{width:clamp(200px,50vw,280px);height:clamp(200px,50vw,280px)}
   .ab-greeting{font-size:clamp(2.2rem,8vw,3.5rem)}
   .ab-underline{justify-content:center}
   .gh-wrap{margin-top:3rem}
   .ph{flex-direction:column;align-items:flex-start;gap:1rem}
+  .apps-grid{grid-template-columns:1fr}
   .btn{padding:.8rem 1.8rem;font-size:.7rem}
   /* Journey: vertical timeline on mobile */
   #journey{height:auto}
@@ -452,6 +466,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
     <li><a href="#projects" data-anchor>Work</a></li>
     <li><a href="#journey" data-anchor>Journey</a></li>
     <li><a href="#experience" data-anchor>Experience</a></li>
+    <li><a href="#try-apps" data-anchor>Try Apps</a></li>
     <li><a href="#contact" data-anchor>Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -473,6 +488,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
   <a href="#projects" data-mob data-anchor>Work</a>
   <a href="#journey" data-mob data-anchor>Journey</a>
   <a href="#experience" data-mob data-anchor>Experience</a>
+  <a href="#try-apps" data-mob data-anchor>Try Apps</a>
   <a href="#contact" data-mob data-anchor>Contact</a>
 </div>
 
@@ -504,7 +520,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
     </div>
 
     <div class="hrole">AI/ML Engineer · Full-Stack Developer · Community Leader</div>
-    <p class="hcopy" id="htagline">Turning ideas into scalable products. Building intelligent solutions, leading communities, and driving impact through code and collaboration.</p>
+    <p class="hcopy" id="htagline">Turning ideas into scalable products.</p>
 
     <div class="hbtns">
       <a href="#projects" class="btn btn-fill" data-anchor>View Work →</a>
@@ -545,8 +561,8 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
       <h2 class="big rv d2">Builder,<br>Leader,<br><em>Engineer</em></h2>
     </div>
     <div>
-      <p class="bt rv d2">I contribute to initiatives spanning <strong>community building, development, and marketing</strong>. From orchestrating our flagship <strong>Indo-French AI hackathon</strong> with 44 finalist teams to building AI-powered platforms that solve real infrastructure problems — I thrive at the intersection of <strong>technology and leadership</strong>.</p>
-      <p class="bt rv d3">Passionate about fostering meaningful connections and empowering communities through <strong>innovative strategies</strong>. Active in roles that merge community engagement and technology, driving impactful outcomes through <strong>collaboration and execution</strong>.</p>
+      <p class="bt rv d2">I build <strong>AI/ML systems, full-stack applications, and developer tools</strong>. From training <strong>YOLOv8 models</strong> for solar panel fault detection to architecting <strong>React Native + FastAPI microservices</strong> for BharatYatra — I ship production code that solves real problems across <strong>computer vision, NLP, and cloud infrastructure</strong>.</p>
+      <p class="bt rv d3">Currently exploring <strong>edge deployment, AWS serverless architectures, and LLM-powered applications</strong>. I also lead technical communities — running hands-on workshops on <strong>Git, prompt engineering, and full-stack development</strong> to help other developers level up.</p>
       <div class="sstats rv d4">
         <div class="sstat"><div class="sstat-n" data-count="10" data-sfx="+">0</div><div class="sstat-l">Projects Built</div></div>
         <div class="sstat"><div class="sstat-n" data-count="15" data-sfx="+">0</div><div class="sstat-l">Technologies</div></div>
@@ -691,7 +707,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
 
   <div class="pgrid rv d2">
     <!-- SiteSignal -->
-    <div class="pc" id="pf3" onclick="window.open('https://github.com/vanshcodeshaerd','_blank')">
+    <div class="pc" id="pf3" onclick="window.open('https://ss-site-signal.vercel.app/','_blank')">
       <div class="pcv">
         <figure class="liquid-figure" data-liquid data-scale="18">
           <svg width="0" height="0" style="position:absolute">
@@ -709,6 +725,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
         <div class="ttrow" style="margin-bottom:1.2rem">
           <span class="tt">Python</span><span class="tt">AI/ML</span><span class="tt">Automation</span>
         </div>
+        <a class="pl" href="https://ss-site-signal.vercel.app/" target="_blank" rel="noopener">Live Demo →</a>
       </div>
     </div>
 
@@ -801,13 +818,26 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
       </div>
     </div>
 
-    <!-- More on GitHub -->
-    <div class="pc" style="display:flex;align-items:center;justify-content:center;min-height:300px" id="more-proj">
-      <div style="text-align:center">
-        <div style="font-size:3rem;margin-bottom:1.5rem;opacity:.3">→</div>
-        <div style="font-family:var(--fh);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;margin-bottom:.5rem">More Projects</div>
-        <div style="font-size:.72rem;color:var(--mt);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem">Smart Class Gate · NeoFolks · Predictive Text</div>
-        <div style="font-size:.72rem;color:var(--mt);letter-spacing:.15em;text-transform:uppercase">View All on GitHub</div>
+    <!-- Tetrathon 2026 Website -->
+    <div class="pc" id="pf8" onclick="window.open('https://www.nuv-isen.com','_blank')">
+      <div class="pcv">
+        <figure class="liquid-figure" data-liquid data-scale="18">
+          <svg width="0" height="0" style="position:absolute">
+            <filter id="liq-p8"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/></filter>
+          </svg>
+          <div class="placeholder-bg"></div>
+          <div class="glow"></div>
+        </figure>
+        <div class="pcv-inner">🏆</div>
+      </div>
+      <div class="pci">
+        <div class="pc-n">08 / Event Website</div>
+        <h3 class="pc-title">Tetrathon 2026</h3>
+        <p class="pc-desc">Official website for NUV x ISEN's flagship Indo-French AI hackathon. Built end-to-end — registration, team management, and live event coordination for 44 finalist teams.</p>
+        <div class="ttrow" style="margin-bottom:1.2rem">
+          <span class="tt">TypeScript</span><span class="tt">React</span><span class="tt">Web Dev</span>
+        </div>
+        <a class="pl" href="https://www.nuv-isen.com" target="_blank" rel="noopener">Live Site →</a>
       </div>
     </div>
   </div>
@@ -842,7 +872,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
 
         <!-- Top row items (above the line) -->
         <div class="j-top-row">
-          <div class="j-item top" style="margin-left:18vw">
+          <div class="j-item top" style="margin-left:14vw">
             <div class="j-item-text">
               <div class="j-year">2024</div>
               <div class="j-month">September</div>
@@ -863,8 +893,8 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
           </div>
 
           <div class="j-item top" style="margin-left:12vw">
-            <div class="j-year">2026</div>
             <div class="j-item-text">
+              <div class="j-year">2026</div>
               <div class="j-month">January</div>
               <div class="j-desc">Joined Sarvada Software Solutions LLP as AI/ML Intern, building real-world intelligence systems with Python and ML frameworks</div>
             </div>
@@ -885,7 +915,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
 
         <!-- Bottom row items (below the line) -->
         <div class="j-bottom-row">
-          <div class="j-item bottom" style="margin-left:26vw">
+          <div class="j-item bottom" style="margin-left:20vw">
             <div class="j-item-dot"></div>
             <div class="j-item-stem"></div>
             <div class="j-item-text">
@@ -942,6 +972,21 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
 
   <div class="ex-item rv d2">
     <div>
+      <div class="ex-period">Sep 2026 — Present</div>
+      <div class="ex-loc">📍 Vadodara, India</div>
+    </div>
+    <div>
+      <h3 class="ex-co" style="cursor:default">Amazon Web Services</h3>
+      <div class="ex-role">Student Builder Campus Leader</div>
+      <p class="ex-desc">Selected as AWS Student Builder Campus Leader at Navrachana University. Driving cloud computing awareness, organizing hands-on workshops, and empowering students to build on AWS infrastructure.</p>
+      <div class="ex-tags">
+        <span class="ex-tag">AWS</span><span class="ex-tag">Cloud Computing</span><span class="ex-tag">Community Building</span><span class="ex-tag">Campus Leadership</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-item rv d3">
+    <div>
       <div class="ex-period">Jun 2026 — Jul 2026</div>
       <div class="ex-loc">📍 Vadodara, India</div>
     </div>
@@ -955,7 +1000,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
     </div>
   </div>
 
-  <div class="ex-item rv d3">
+  <div class="ex-item rv d4">
     <div>
       <div class="ex-period">Jan 2026 — Apr 2026</div>
       <div class="ex-loc">📍 Surat, India</div>
@@ -970,7 +1015,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
     </div>
   </div>
 
-  <div class="ex-item rv d4">
+  <div class="ex-item rv d5">
     <div>
       <div class="ex-period">Sep 2025 — Jul 2026</div>
       <div class="ex-loc">📍 Vadodara, India</div>
@@ -981,21 +1026,6 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
       <p class="ex-desc">Delivered impactful sessions as core speaker — trained participants in web development, prompt engineering and GitHub. Led end-to-end planning and execution of sessions focusing on simplifying complex concepts into practical hands-on learning. Conducted the "Pull to Commit" workshop guiding attendees on building real-world projects and leveraging AI tools effectively.</p>
       <div class="ex-tags">
         <span class="ex-tag">Web Dev</span><span class="ex-tag">Prompt Engineering</span><span class="ex-tag">GitHub</span><span class="ex-tag">Public Speaking</span><span class="ex-tag">Workshop Design</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="ex-item rv d5">
-    <div>
-      <div class="ex-period">Sep 2026 — Present</div>
-      <div class="ex-loc">📍 Vadodara, India</div>
-    </div>
-    <div>
-      <h3 class="ex-co" style="cursor:default">Amazon Web Services</h3>
-      <div class="ex-role">Student Builder Campus Leader</div>
-      <p class="ex-desc">Selected as AWS Student Builder Campus Leader at Navrachana University. Driving cloud computing awareness, organizing hands-on workshops, and empowering students to build on AWS infrastructure.</p>
-      <div class="ex-tags">
-        <span class="ex-tag">AWS</span><span class="ex-tag">Cloud Computing</span><span class="ex-tag">Community Building</span><span class="ex-tag">Campus Leadership</span>
       </div>
     </div>
   </div>
@@ -1046,10 +1076,59 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ TRY MY APPS -->
+<section id="try-apps" class="sec divider">
+  <div class="sl rv">006 / Live Apps</div>
+  <h2 class="big rv d1" style="margin-bottom:1.5rem">Try My<br>Apps</h2>
+  <p class="rv d2" style="color:var(--mt);font-size:1rem;line-height:1.7;max-width:600px;margin-bottom:1rem">Explore and test the apps I've built. These are live, deployed products — not just code on GitHub.</p>
+
+  <div class="apps-grid">
+    <div class="app-card rv d2">
+      <div class="app-emoji">🏛️</div>
+      <span class="app-badge live">Live</span>
+      <div class="app-name">BharatYatra</div>
+      <p class="app-desc">One-stop tourism ecosystem — AI trip planning, AR heritage experiences, real-time safety suite, and direct artisan connections.</p>
+      <a href="https://bharat-yatra-live.lovable.app" target="_blank" rel="noopener" class="app-link">Open App →</a>
+    </div>
+
+    <div class="app-card rv d3">
+      <div class="app-emoji">✈️</div>
+      <span class="app-badge live">Live</span>
+      <div class="app-name">AirFlow</div>
+      <p class="app-desc">Full-stack airport operations platform — passenger booking, QR boarding passes, UPI payments, and real-time flight status.</p>
+      <a href="https://airflowmanagement.lovable.app" target="_blank" rel="noopener" class="app-link">Open App →</a>
+    </div>
+
+    <div class="app-card rv d4">
+      <div class="app-emoji">🔬</div>
+      <span class="app-badge live">Live</span>
+      <div class="app-name">SunsightIntel</div>
+      <p class="app-desc">AI-powered clinical trial intelligence — hospital lead extraction, trial participant identification, and automated outreach campaigns.</p>
+      <a href="https://ss-site-signal.vercel.app/" target="_blank" rel="noopener" class="app-link">Open App →</a>
+    </div>
+
+    <div class="app-card rv d5">
+      <div class="app-emoji">🏆</div>
+      <span class="app-badge live">Live</span>
+      <div class="app-name">Tetrathon 2026</div>
+      <p class="app-desc">Official website for NUV x ISEN's flagship Indo-French AI hackathon — registration, team management, and live event coordination.</p>
+      <a href="https://www.nuv-isen.com" target="_blank" rel="noopener" class="app-link">Visit Site →</a>
+    </div>
+
+    <div class="app-card rv d6">
+      <div class="app-emoji">🛰️</div>
+      <span class="app-badge soon">LinkedIn Only</span>
+      <div class="app-name">Solar AI</div>
+      <p class="app-desc">YOLOv8-powered solar panel detection from satellite imagery — 85-90% precision across climates and rooftop types. Not deployed yet.</p>
+      <a href="https://linkedin.com/in/vansh-shah-0bbb46309" target="_blank" rel="noopener" class="app-link">View on LinkedIn →</a>
+    </div>
+  </div>
+</section>
+
 <!-- QUOTE -->
 <div class="qt-sec rv">
   <div class="qt-bg"></div>
-  <p class="qt">"Turning ideas into <span>scalable products</span> — one line of code, one community, one hackathon at a time."</p>
+  <p class="qt">"Turning ideas into <span>scalable products</span>."</p>
 </div>
 
 <!-- ═══════════════════════════════════════════════ CONTACT -->
@@ -1305,23 +1384,43 @@ if(!isMobile&&!reduceMotion){
   const jItems=document.querySelectorAll('.j-item');
 
   if(journeySection&&jTrack){
-    window.addEventListener('scroll',()=>{
-      const rect=journeySection.getBoundingClientRect();
-      const sectionH=journeySection.offsetHeight;
+    const setJourneyHeight=()=>{
+      const trackW=jTrack.scrollWidth;
+      const vw=window.innerWidth;
       const vh=window.innerHeight;
-      const scrollable=sectionH-vh;
+      const horizontalTravel=trackW-vw;
+      if(horizontalTravel>0) journeySection.style.height=(vh+horizontalTravel+80)+'px';
+    };
+    setJourneyHeight();
+    window.addEventListener('resize',setJourneyHeight);
 
-      if(rect.top<=0&&rect.bottom>=vh){
-        const progress=Math.min(1,Math.max(0,-rect.top/scrollable));
-        const trackW=jTrack.scrollWidth-window.innerWidth;
-        jTrack.style.transform='translateX('+ (-progress*trackW) +'px)';
+    let ticking=false;
+    window.addEventListener('scroll',()=>{
+      if(!ticking){
+        requestAnimationFrame(()=>{
+          const rect=journeySection.getBoundingClientRect();
+          const sectionH=journeySection.offsetHeight;
+          const vh=window.innerHeight;
+          const scrollable=sectionH-vh;
 
-        if(jLine) jLine.style.width=(progress*98)+'%';
+          if(rect.top<=0&&rect.bottom>=vh){
+            const progress=Math.min(1,Math.max(0,-rect.top/scrollable));
+            const trackW=jTrack.scrollWidth-window.innerWidth;
+            jTrack.style.transform='translateX('+ (-progress*trackW) +'px)';
 
-        jItems.forEach((item,idx)=>{
-          const threshold=(idx+1)/(jItems.length+2);
-          if(progress>=threshold) item.classList.add('vis');
+            if(jLine){
+              const lineProgress=Math.min(progress*1.05,1);
+              jLine.style.width=(lineProgress*100)+'%';
+            }
+
+            jItems.forEach((item,idx)=>{
+              const threshold=(idx+0.5)/(jItems.length+1);
+              if(progress>=threshold) item.classList.add('vis');
+            });
+          }
+          ticking=false;
         });
+        ticking=true;
       }
     },{passive:true});
   }
@@ -1334,7 +1433,7 @@ if(!isMobile&&!reduceMotion){
 /* ── 3D TILT ON PROJECT CARDS ─────────────────────────── */
 const isTouch=matchMedia('(hover:none)').matches||window.innerWidth<=900;
 if(!isTouch&&!reduceMotion){
-  ['pf1','pf2','pf3','pf4','pf5','pf6','pf7'].forEach(id=>{
+  ['pf1','pf2','pf3','pf4','pf5','pf6','pf7','pf8'].forEach(id=>{
     const el=document.getElementById(id);if(!el)return;
     el.addEventListener('mousemove',e=>{
       const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
