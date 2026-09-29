@@ -126,7 +126,7 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .hbtns{display:flex;align-items:center;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-top:2.4rem}
 
 /* Hero portrait */
-.hero-portrait{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:clamp(72px,9vw,132px);height:clamp(122px,15vw,224px);opacity:0;transition:opacity 1s ease .5s,width .3s,height .3s;perspective:1200px}
+.hero-portrait{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:clamp(100px,12vw,180px);height:clamp(170px,20vw,310px);opacity:0;transition:opacity 1s ease .5s,width .3s,height .3s;perspective:1200px}
 .hero-portrait.v{opacity:1}
 .hero-portrait-tilt{position:relative;width:100%;height:100%;border-radius:999px;overflow:hidden;transform-style:preserve-3d;will-change:transform;box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .liquid-figure{position:relative;overflow:hidden;background:var(--s2);width:100%;height:100%;border-radius:999px}
@@ -250,41 +250,43 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .pc-title{font-family:var(--fh);font-size:1.3rem;font-weight:700;letter-spacing:-.025em;margin-bottom:.6rem}
 .pc-desc{font-size:.83rem;color:var(--mt);line-height:1.7;margin-bottom:1.2rem}
 
-/* ── JOURNEY (horizontal scroll timeline) ── */
-#journey{position:relative;height:calc(100vh + 80vw)}
-.j-pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
-.j-header{position:absolute;top:3rem;left:4rem;z-index:2}
-.j-header .sl{margin-bottom:.8rem}
-.j-track{display:flex;align-items:center;height:60vh;will-change:transform;padding:0 5vw}
-.j-img{flex-shrink:0;width:28vw;height:100%;border-radius:1vw;overflow:hidden;margin-right:5vw}
-.j-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.j-content{position:relative;flex-shrink:0;height:100%;display:flex;flex-direction:column}
-.j-title-block{position:absolute;top:0;left:0}
-.j-title-block h2{font-family:var(--fh);font-size:3vw;font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:1vw}
-.j-period{font-size:1.4vw;color:var(--mt);letter-spacing:.05em}
-.j-line-wrap{position:absolute;top:50%;left:0;width:100%;display:flex;align-items:center;transform:translateY(-50%);z-index:1}
-.j-dot-end{width:.8vw;height:.8vw;border-radius:50%;background:var(--ac);flex-shrink:0}
-.j-line{height:2px;background:var(--ac);width:0%;transition:width .15s ease-out}
-.j-top-row,.j-bottom-row{position:relative;height:50%;display:flex;align-items:stretch}
-.j-top-row{padding-top:2vw}
-.j-bottom-row{padding-bottom:2vw}
-.j-item{position:relative;flex-shrink:0;width:20vw;padding:0 2vw}
-.j-item-stem{position:absolute;width:2px;background:var(--ac);border-radius:1px;opacity:0;transition:opacity .6s,height .6s var(--ease-expo)}
-.j-item.top .j-item-stem{bottom:0;left:2vw;height:0}
-.j-item.bottom .j-item-stem{top:0;left:2vw;height:0}
-.j-item.vis .j-item-stem{opacity:1}
-.j-item.top.vis .j-item-stem{height:100%}
-.j-item.bottom.vis .j-item-stem{height:100%}
-.j-item-dot{width:1vw;height:1vw;border-radius:50%;background:var(--ac);position:absolute;left:2vw;transform:translateX(-35%) scale(0);transition:transform .4s var(--ease-expo)}
-.j-item.top .j-item-dot{bottom:-0.5vw}
-.j-item.bottom .j-item-dot{top:-0.5vw}
-.j-item.vis .j-item-dot{transform:translateX(-35%) scale(1)}
-.j-item-text{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s var(--ease-expo)}
+/* ── JOURNEY (vertical scroll-reveal timeline) ── */
+#journey{position:relative;padding:8rem 4rem;max-width:1440px;margin:0 auto}
+.j-pin{position:relative}
+.j-header{margin-bottom:4rem;text-align:center}
+.j-header .sl{justify-content:center;margin-bottom:1rem}
+.j-track{display:none}
+.j-img{display:none}
+.j-content{position:relative}
+.j-title-block{text-align:center;margin-bottom:5rem}
+.j-title-block h2{font-family:var(--fh);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:.8rem}
+.j-period{font-size:1rem;color:var(--mt);letter-spacing:.1em}
+.j-line-wrap{display:none}
+.j-dot-end{display:none}
+.j-line{display:none}
+.j-top-row,.j-bottom-row{display:flex;flex-direction:column;gap:0}
+.j-top-row{margin-bottom:0}
+.j-item{position:relative;display:grid;grid-template-columns:1fr 60px 1fr;align-items:start;gap:0;padding:0;width:100%}
+.j-item-stem{display:none}
+.j-item-dot{position:relative;width:16px;height:16px;border-radius:50%;background:var(--ac);justify-self:center;z-index:2;transform:scale(.6);opacity:.4;transition:transform .5s var(--ease-expo),opacity .5s,box-shadow .5s;grid-column:2;margin-top:.4rem}
+.j-item.vis .j-item-dot{transform:scale(1);opacity:1}
+.j-item.j-active .j-item-dot{transform:scale(1.3);box-shadow:0 0 20px rgba(202,255,0,.6),0 0 40px rgba(202,255,0,.2)}
+.j-item-text{padding:0 2rem 4rem;opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-expo),transform .7s var(--ease-expo),filter .5s;overflow-wrap:break-word}
 .j-item.vis .j-item-text{opacity:1;transform:translateY(0)}
-.j-item.bottom .j-item-text{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
-.j-year{font-family:var(--fh);font-size:2.2vw;font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:.5vw}
-.j-month{font-size:.85vw;color:var(--ac);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6vw}
-.j-desc{font-size:1.1vw;color:var(--mt);line-height:1.5;max-width:18vw}
+.j-item.j-blur .j-item-text{filter:blur(3px);opacity:.15}
+.j-item.top .j-item-text{grid-column:1;grid-row:1;text-align:right}
+.j-item.top .j-item-dot{grid-row:1}
+.j-item.top::after{content:'';grid-column:3;grid-row:1}
+.j-item.bottom .j-item-text{grid-column:3;grid-row:1;text-align:left}
+.j-item.bottom .j-item-dot{grid-row:1}
+.j-item.bottom::before{content:'';grid-column:1;grid-row:1}
+.j-item.bottom .j-item-text{height:auto}
+.j-year{font-family:var(--fh);font-size:clamp(1.6rem,2.5vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:.4rem}
+.j-month{font-size:.78rem;color:var(--ac);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.j-desc{font-size:.92rem;color:var(--mt);line-height:1.65;max-width:380px;overflow-wrap:break-word}
+.j-item.top .j-desc{margin-left:auto}
+.j-timeline-line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(255,255,255,.06);transform:translateX(-50%);z-index:0}
+.j-timeline-progress{position:absolute;left:50%;top:0;width:2px;height:0;background:var(--ac);transform:translateX(-50%);z-index:1;border-radius:1px;transition:height .2s ease-out;box-shadow:0 0 8px rgba(202,255,0,.3)}
 
 /* ── EXPERIENCE ─────────────────────────── */
 .ex-item{display:grid;grid-template-columns:240px 1fr;gap:5rem;padding:3.5rem 0;border-bottom:1px solid var(--bd)}
@@ -368,27 +370,24 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
   .ph{flex-direction:column;align-items:flex-start;gap:1rem}
   .apps-grid{grid-template-columns:1fr}
   .btn{padding:.8rem 1.8rem;font-size:.7rem}
-  /* Journey: vertical timeline on mobile */
-  #journey{height:auto}
-  .j-pin{position:relative;height:auto;flex-direction:column;padding:5rem 1.5rem}
-  .j-header{position:relative;top:auto;left:auto;margin-bottom:2rem}
-  .j-track{flex-direction:column;height:auto;padding:0;width:100%}
-  .j-img{width:100%;height:50vw;border-radius:3vw;margin-right:0;margin-bottom:3rem}
-  .j-content{width:100%;height:auto;flex-direction:column}
-  .j-title-block{position:relative;margin-bottom:2rem}
-  .j-title-block h2{font-size:2rem}
-  .j-period{font-size:.85rem}
-  .j-line-wrap{display:none}
-  .j-top-row,.j-bottom-row{flex-direction:column;height:auto;padding:0;gap:2rem}
-  .j-item{width:100%;padding:0 0 0 2.5rem;border-left:2px solid var(--bd)}
-  .j-item-stem{display:none}
-  .j-item-dot{left:0;top:.5rem;bottom:auto;width:12px;height:12px;transform:translateX(-7px) scale(1)}
-  .j-item.top .j-item-dot,.j-item.bottom .j-item-dot{top:.5rem;bottom:auto}
-  .j-item-text{opacity:1;transform:none}
-  .j-item.bottom .j-item-text{height:auto}
+  /* Journey: single-column on mobile */
+  #journey{padding:5rem 1.5rem}
+  .j-title-block{margin-bottom:3rem}
+  .j-item{display:block;padding:0 0 0 2.5rem;border-left:2px solid rgba(255,255,255,.08);position:relative;margin-left:0!important}
+  .j-item.top .j-item-text,.j-item.bottom .j-item-text{grid-column:unset;text-align:left;padding:0 0 2rem 0}
+  .j-item.top .j-desc{margin-left:0}
+  .j-item-dot{position:absolute;left:0;top:.4rem;width:14px;height:14px;transform:translateX(-8px) scale(1);margin-top:0}
+  .j-item.top .j-item-dot,.j-item.bottom .j-item-dot{position:absolute;left:0;top:.4rem}
+  .j-item.top::after,.j-item.bottom::before{display:none}
+  .j-item.j-blur .j-item-dot{background:rgba(202,255,0,.25);transform:translateX(-8px) scale(.7)}
+  .j-item.j-active .j-item-dot{transform:translateX(-8px) scale(1.3);box-shadow:0 0 12px rgba(202,255,0,.5)}
+  .j-timeline-line{left:0;transform:none}
+  .j-timeline-progress{left:0;transform:none}
+  .j-v-line{position:absolute;left:0;top:0;width:2px;background:var(--ac);transition:height .3s ease-out;z-index:1;border-radius:1px}
+  .j-top-row,.j-bottom-row{position:relative}
   .j-year{font-size:1.3rem}
   .j-month{font-size:.72rem}
-  .j-desc{font-size:.85rem;max-width:100%}
+  .j-desc{font-size:.85rem;max-width:100%;overflow-wrap:break-word;word-break:break-word}
 }
 /* ── SMALL PHONE (max 480px) ────────────── */
 @media(max-width:480px){
@@ -423,7 +422,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
   nav.s{padding:.8rem 1rem}
   #hero{padding:6rem 1rem 3rem}
   .mq-i{font-size:.6rem;letter-spacing:.15em}
-  #journey .j-pin{padding:4rem 1rem}
+  #journey{padding:4rem 1rem}
 }
 /* ── Tiny screens (max 360px) ────────────── */
 @media(max-width:360px){
@@ -499,7 +498,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
   <div class="hnoise"></div>
 
   <div class="hero-center">
-    <div class="hloc">Vadodara, Gujarat · Navrachana University · Pre-Final Year CSE</div>
+    <div class="hloc">Vadodara, India</div>
 
     <div class="hname-wrap">
       <div class="hname" id="hname" aria-label="VANSH SHAH"></div>
@@ -545,7 +544,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
     <div class="ab-photo-wrap">
       <div class="ab-blob"></div>
       <div class="ab-photo">
-        <img src="photo.jpg" alt="Vansh Shah" draggable="false">
+        <img src="avatar.png" alt="Vansh Shah" draggable="false">
       </div>
     </div>
     <div class="ab-intro">
@@ -561,9 +560,10 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
       <h2 class="big rv d2">Builder,<br>Leader,<br><em>Engineer</em></h2>
     </div>
     <div>
-      <p class="bt rv d2">I build <strong>AI/ML systems, full-stack applications, and developer tools</strong>. From training <strong>YOLOv8 models</strong> for solar panel fault detection to architecting <strong>React Native + FastAPI microservices</strong> for BharatYatra — I ship production code that solves real problems across <strong>computer vision, NLP, and cloud infrastructure</strong>.</p>
-      <p class="bt rv d3">Currently exploring <strong>edge deployment, AWS serverless architectures, and LLM-powered applications</strong>. I also lead technical communities — running hands-on workshops on <strong>Git, prompt engineering, and full-stack development</strong> to help other developers level up.</p>
-      <div class="sstats rv d4">
+      <p class="bt rv d2">I'm curious by default. I build <strong>AI/ML systems, full-stack applications, and developer tools</strong>. I love starting with an idea, asking <em>"what if?"</em>, and seeing where it takes me. Sometimes that means building something, sometimes leading a team, sometimes bringing a community together — and sometimes simply learning something I've never tried before.</p>
+      <p class="bt rv d3">Currently exploring <strong>edge deployment, AWS serverless architectures, and LLM-powered applications</strong>. I care about <strong>creating, connecting, and growing</strong>. I enjoy working with people, taking on challenges that seem slightly too ambitious, and turning those experiences into something meaningful.</p>
+      <p class="bt rv d4">I'm still figuring out where the journey takes me — but I'm having a lot of fun building along the way.</p>
+      <div class="sstats rv d5">
         <div class="sstat"><div class="sstat-n" data-count="10" data-sfx="+">0</div><div class="sstat-l">Projects Built</div></div>
         <div class="sstat"><div class="sstat-n" data-count="15" data-sfx="+">0</div><div class="sstat-l">Technologies</div></div>
         <div class="sstat"><div class="sstat-n" data-count="44">0</div><div class="sstat-l">Hackathon Teams Led</div></div>
@@ -571,7 +571,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
       </div>
 
       <!-- GitHub Contribution Graph -->
-      <div class="gh-wrap rv d5">
+      <div class="gh-wrap rv d6">
         <div class="gh-header">
           <div class="gh-title"><a href="https://github.com/vanshcodeshaerd" target="_blank" rel="noopener">@vanshcodeshaerd</a> on GitHub</div>
           <div class="gh-legend">
@@ -752,94 +752,10 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
       </div>
     </div>
 
-    <!-- SKY MAP AR -->
-    <div class="pc" id="pf5" onclick="window.open('https://github.com/vanshcodeshaerd/SKY_MAP_AR','_blank')">
-      <div class="pcv">
-        <figure class="liquid-figure" data-liquid data-scale="18">
-          <svg width="0" height="0" style="position:absolute">
-            <filter id="liq-p5"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/></filter>
-          </svg>
-          <div class="placeholder-bg"></div>
-          <div class="glow"></div>
-        </figure>
-        <div class="pcv-inner">🌌</div>
-      </div>
-      <div class="pci">
-        <div class="pc-n">05 / AR &amp; Python</div>
-        <h3 class="pc-title">SKY MAP AR</h3>
-        <p class="pc-desc">Augmented reality sky mapping application for real-time celestial object identification and visualization using Python and computer vision.</p>
-        <div class="ttrow" style="margin-bottom:1.2rem">
-          <span class="tt">Python</span><span class="tt">AR</span><span class="tt">Computer Vision</span>
-        </div>
-      </div>
-    </div>
+  </div>
 
-    <!-- Hand Gesture CV -->
-    <div class="pc" id="pf6" onclick="window.open('https://github.com/vanshcodeshaerd/Hand_Gesture_CV','_blank')">
-      <div class="pcv">
-        <figure class="liquid-figure" data-liquid data-scale="18">
-          <svg width="0" height="0" style="position:absolute">
-            <filter id="liq-p6"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/></filter>
-          </svg>
-          <div class="placeholder-bg"></div>
-          <div class="glow"></div>
-        </figure>
-        <div class="pcv-inner">✋</div>
-      </div>
-      <div class="pci">
-        <div class="pc-n">06 / Computer Vision</div>
-        <h3 class="pc-title">Hand Gesture Recognition</h3>
-        <p class="pc-desc">Real-time hand gesture recognition system using OpenCV and machine learning models for intuitive human-computer interaction.</p>
-        <div class="ttrow" style="margin-bottom:1.2rem">
-          <span class="tt">Python</span><span class="tt">OpenCV</span><span class="tt">ML</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cancer Detection -->
-    <div class="pc" id="pf7" onclick="window.open('https://github.com/vanshcodeshaerd/Cancer-Detection-','_blank')">
-      <div class="pcv">
-        <figure class="liquid-figure" data-liquid data-scale="18">
-          <svg width="0" height="0" style="position:absolute">
-            <filter id="liq-p7"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/></filter>
-          </svg>
-          <div class="placeholder-bg"></div>
-          <div class="glow"></div>
-        </figure>
-        <div class="pcv-inner">🧬</div>
-      </div>
-      <div class="pci">
-        <div class="pc-n">07 / Healthcare AI</div>
-        <h3 class="pc-title">Cancer Detection ML</h3>
-        <p class="pc-desc">Machine learning model for early cancer detection and classification from medical imaging data, leveraging deep learning for improved diagnostic accuracy.</p>
-        <div class="ttrow" style="margin-bottom:1.2rem">
-          <span class="tt">JavaScript</span><span class="tt">ML</span><span class="tt">Healthcare</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tetrathon 2026 Website -->
-    <div class="pc" id="pf8" onclick="window.open('https://www.nuv-isen.com','_blank')">
-      <div class="pcv">
-        <figure class="liquid-figure" data-liquid data-scale="18">
-          <svg width="0" height="0" style="position:absolute">
-            <filter id="liq-p8"><feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/></filter>
-          </svg>
-          <div class="placeholder-bg"></div>
-          <div class="glow"></div>
-        </figure>
-        <div class="pcv-inner">🏆</div>
-      </div>
-      <div class="pci">
-        <div class="pc-n">08 / Event Website</div>
-        <h3 class="pc-title">Tetrathon 2026</h3>
-        <p class="pc-desc">Official website for NUV x ISEN's flagship Indo-French AI hackathon. Built end-to-end — registration, team management, and live event coordination for 44 finalist teams.</p>
-        <div class="ttrow" style="margin-bottom:1.2rem">
-          <span class="tt">TypeScript</span><span class="tt">React</span><span class="tt">Web Dev</span>
-        </div>
-        <a class="pl" href="https://www.nuv-isen.com" target="_blank" rel="noopener">Live Site →</a>
-      </div>
-    </div>
+  <div style="text-align:center;margin-top:3.5rem" class="rv d3">
+    <a href="https://github.com/vanshcodeshaerd?tab=repositories" target="_blank" rel="noopener" class="btn btn-out" style="font-size:.78rem;padding:.85rem 2.2rem;gap:.8rem">Explore More Projects on GitHub <span style="font-size:1.1rem">→</span></a>
   </div>
 </section>
 
@@ -849,100 +765,86 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
     <div class="j-header">
       <div class="sl">004 / Journey</div>
     </div>
-    <div class="j-track" id="j-track">
-      <!-- Photo -->
-      <div class="j-img">
-        <img src="photo.jpg" alt="Vansh Shah" draggable="false">
+
+    <div class="j-content">
+      <div class="j-title-block">
+        <h2>My Journey</h2>
+        <div class="j-period">2024 — Present</div>
       </div>
 
-      <!-- Timeline content -->
-      <div class="j-content">
-        <!-- Title block -->
-        <div class="j-title-block">
-          <h2>My Journey</h2>
-          <div class="j-period">2024 — Present</div>
+      <div class="j-timeline-line"></div>
+      <div class="j-timeline-progress" id="j-timeline-progress"></div>
+
+      <div class="j-top-row">
+        <div class="j-item top">
+          <div class="j-item-text">
+            <div class="j-year">2024</div>
+            <div class="j-month">September</div>
+            <div class="j-desc">Began BTech in Computer Science &amp; Engineering at Navrachana University, driven by a passion for AI and building products</div>
+          </div>
+          <div class="j-item-dot"></div>
         </div>
 
-        <!-- Horizontal line -->
-        <div class="j-line-wrap">
-          <div class="j-dot-end"></div>
-          <div class="j-line" id="j-line"></div>
-          <div class="j-dot-end"></div>
-        </div>
-
-        <!-- Top row items (above the line) -->
-        <div class="j-top-row">
-          <div class="j-item top" style="margin-left:14vw">
-            <div class="j-item-text">
-              <div class="j-year">2024</div>
-              <div class="j-month">September</div>
-              <div class="j-desc">Began BTech in Computer Science &amp; Engineering at Navrachana University, driven by a passion for AI and building products</div>
-            </div>
-            <div class="j-item-stem"></div>
-            <div class="j-item-dot"></div>
-          </div>
-
-          <div class="j-item top" style="margin-left:12vw">
-            <div class="j-item-text">
-              <div class="j-year">2025</div>
-              <div class="j-month">October</div>
-              <div class="j-desc">Delivered sessions as Core Speaker on web development, prompt engineering &amp; GitHub, training participants in practical AI workflows</div>
-            </div>
-            <div class="j-item-stem"></div>
-            <div class="j-item-dot"></div>
-          </div>
-
-          <div class="j-item top" style="margin-left:12vw">
-            <div class="j-item-text">
-              <div class="j-year">2026</div>
-              <div class="j-month">January</div>
-              <div class="j-desc">Joined Sarvada Software Solutions LLP as AI/ML Intern, building real-world intelligence systems with Python and ML frameworks</div>
-            </div>
-            <div class="j-item-stem"></div>
-            <div class="j-item-dot"></div>
-          </div>
-
-          <div class="j-item top" style="margin-left:12vw">
-            <div class="j-item-text">
-              <div class="j-year">2026</div>
-              <div class="j-month">May — Sep</div>
-              <div class="j-desc">Appointed FlutterFlow Ambassador (May) and selected as AWS Student Builder Campus Leader (Sep), accelerating cloud and mobile innovation on campus</div>
-            </div>
-            <div class="j-item-stem"></div>
-            <div class="j-item-dot"></div>
+        <div class="j-item bottom">
+          <div class="j-item-dot"></div>
+          <div class="j-item-text">
+            <div class="j-year">2025</div>
+            <div class="j-month">January</div>
+            <div class="j-desc">Competed at Tetrathon 2025 and placed Top 10, earning special jury recognition for creativity and problem-solving</div>
           </div>
         </div>
 
-        <!-- Bottom row items (below the line) -->
-        <div class="j-bottom-row">
-          <div class="j-item bottom" style="margin-left:20vw">
-            <div class="j-item-dot"></div>
-            <div class="j-item-stem"></div>
-            <div class="j-item-text">
-              <div class="j-year">2025</div>
-              <div class="j-month">January</div>
-              <div class="j-desc">Competed at Tetrathon 2025 and placed Top 10, earning special jury recognition for creativity and problem-solving</div>
-            </div>
+        <div class="j-item top">
+          <div class="j-item-text">
+            <div class="j-year">2025</div>
+            <div class="j-month">September</div>
+            <div class="j-desc">Stepped up as Technical Lead at NeoFolks Tech Club, driving hands-on learning and end-to-end event planning</div>
           </div>
+          <div class="j-item-dot"></div>
+        </div>
 
-          <div class="j-item bottom" style="margin-left:10vw">
-            <div class="j-item-dot"></div>
-            <div class="j-item-stem"></div>
-            <div class="j-item-text">
-              <div class="j-year">2025</div>
-              <div class="j-month">September</div>
-              <div class="j-desc">Stepped up as Technical Lead at NeoFolks Tech Club, driving hands-on learning and end-to-end event planning</div>
-            </div>
+        <div class="j-item bottom">
+          <div class="j-item-dot"></div>
+          <div class="j-item-text">
+            <div class="j-year">2025</div>
+            <div class="j-month">October</div>
+            <div class="j-desc">Delivered sessions as Core Speaker on web development, prompt engineering &amp; GitHub, training participants in practical AI workflows</div>
           </div>
+        </div>
 
-          <div class="j-item bottom" style="margin-left:16vw">
-            <div class="j-item-dot"></div>
-            <div class="j-item-stem"></div>
-            <div class="j-item-text">
-              <div class="j-year">2026</div>
-              <div class="j-month">June</div>
-              <div class="j-desc">Orchestrated Tetrathon 2026 — our flagship Indo-French AI hackathon with 44 finalist teams across healthcare, agri-tech, fintech &amp; edtech</div>
-            </div>
+        <div class="j-item top">
+          <div class="j-item-text">
+            <div class="j-year">2026</div>
+            <div class="j-month">January</div>
+            <div class="j-desc">Joined Sarvada Software Solutions LLP as AI/ML Intern, building real-world intelligence systems with Python and ML frameworks</div>
+          </div>
+          <div class="j-item-dot"></div>
+        </div>
+
+        <div class="j-item bottom">
+          <div class="j-item-dot"></div>
+          <div class="j-item-text">
+            <div class="j-year">2026</div>
+            <div class="j-month">May — Present</div>
+            <div class="j-desc">Appointed as FlutterFlow Ambassador, advocating low-code mobile development and building community around rapid app prototyping</div>
+          </div>
+        </div>
+
+        <div class="j-item top">
+          <div class="j-item-text">
+            <div class="j-year">2026</div>
+            <div class="j-month">June</div>
+            <div class="j-desc">Orchestrated Tetrathon 2026 — our flagship Indo-French AI hackathon with 44 finalist teams across healthcare, agri-tech, fintech &amp; edtech</div>
+          </div>
+          <div class="j-item-dot"></div>
+        </div>
+
+        <div class="j-item bottom">
+          <div class="j-item-dot"></div>
+          <div class="j-item-text">
+            <div class="j-year">2026</div>
+            <div class="j-month">September — Present</div>
+            <div class="j-desc">Selected as AWS Student Builder Campus Leader, driving cloud literacy, hands-on workshops, and serverless innovation across campus</div>
           </div>
         </div>
       </div>
@@ -1376,64 +1278,65 @@ if(heroTiltEl&&heroSection&&!reduceMotion){
   },{passive:true});
 }
 
-/* ── JOURNEY: HORIZONTAL SCROLL (desktop only) ────────── */
-if(!isMobile&&!reduceMotion){
-  const journeySection=document.getElementById('journey');
-  const jTrack=document.getElementById('j-track');
-  const jLine=document.getElementById('j-line');
-  const jItems=document.querySelectorAll('.j-item');
+/* ── JOURNEY: VERTICAL SCROLL-REVEAL TIMELINE ────────── */
+{
+  const jItems=[...document.querySelectorAll('.j-item')];
+  const jProgress=document.getElementById('j-timeline-progress');
+  const topRow=document.querySelector('.j-top-row');
 
-  if(journeySection&&jTrack){
-    const setJourneyHeight=()=>{
-      const trackW=jTrack.scrollWidth;
-      const vw=window.innerWidth;
+  if(jItems.length){
+    jItems.forEach(it=>{it.classList.add('j-blur');});
+
+    const updateJourney=()=>{
       const vh=window.innerHeight;
-      const horizontalTravel=trackW-vw;
-      if(horizontalTravel>0) journeySection.style.height=(vh+horizontalTravel+80)+'px';
-    };
-    setJourneyHeight();
-    window.addEventListener('resize',setJourneyHeight);
+      const triggerY=vh*0.6;
+      let lastReachedBottom=0;
 
-    let ticking=false;
-    window.addEventListener('scroll',()=>{
-      if(!ticking){
-        requestAnimationFrame(()=>{
-          const rect=journeySection.getBoundingClientRect();
-          const sectionH=journeySection.offsetHeight;
-          const vh=window.innerHeight;
-          const scrollable=sectionH-vh;
-
-          if(rect.top<=0&&rect.bottom>=vh){
-            const progress=Math.min(1,Math.max(0,-rect.top/scrollable));
-            const trackW=jTrack.scrollWidth-window.innerWidth;
-            jTrack.style.transform='translateX('+ (-progress*trackW) +'px)';
-
-            if(jLine){
-              const lineProgress=Math.min(progress*1.05,1);
-              jLine.style.width=(lineProgress*100)+'%';
-            }
-
-            jItems.forEach((item,idx)=>{
-              const threshold=(idx+0.5)/(jItems.length+1);
-              if(progress>=threshold) item.classList.add('vis');
-            });
+      jItems.forEach((item,i)=>{
+        const rect=item.getBoundingClientRect();
+        if(rect.top<=triggerY){
+          item.classList.add('vis');
+          item.classList.remove('j-blur');
+          item.classList.add('j-active');
+          const dot=item.querySelector('.j-item-dot');
+          if(dot){
+            const dotRect=dot.getBoundingClientRect();
+            const rowRect=topRow.getBoundingClientRect();
+            lastReachedBottom=dot.offsetTop+dot.offsetHeight/2;
           }
-          ticking=false;
+        } else {
+          item.classList.remove('j-active');
+          if(!item.classList.contains('vis')){
+            item.classList.add('j-blur');
+          } else {
+            item.classList.add('j-blur');
+          }
+        }
+      });
+
+      if(jProgress&&lastReachedBottom>0){
+        jProgress.style.height=lastReachedBottom+'px';
+      }
+    };
+
+    let jTicking=false;
+    window.addEventListener('scroll',()=>{
+      if(!jTicking){
+        requestAnimationFrame(()=>{
+          updateJourney();
+          jTicking=false;
         });
-        ticking=true;
+        jTicking=true;
       }
     },{passive:true});
+    updateJourney();
   }
-} else {
-  document.querySelectorAll('.j-item').forEach(it=>it.classList.add('vis'));
-  const jLine=document.getElementById('j-line');
-  if(jLine) jLine.style.width='98%';
 }
 
 /* ── 3D TILT ON PROJECT CARDS ─────────────────────────── */
 const isTouch=matchMedia('(hover:none)').matches||window.innerWidth<=900;
 if(!isTouch&&!reduceMotion){
-  ['pf1','pf2','pf3','pf4','pf5','pf6','pf7','pf8'].forEach(id=>{
+  ['pf1','pf2','pf3','pf4'].forEach(id=>{
     const el=document.getElementById(id);if(!el)return;
     el.addEventListener('mousemove',e=>{
       const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
