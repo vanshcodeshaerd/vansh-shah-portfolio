@@ -1214,27 +1214,30 @@ if(ghGrid){
     .then(data=>{
       if(!data.contributions)return;
       const contribs=data.contributions;
+      const byDate=new Map(contribs.map(c=>[c.date,c]));
+      const nonZero=contribs.filter(c=>c.count>0).map(c=>c.count).sort((a,b)=>a-b);
+      const q1=nonZero[Math.floor(nonZero.length*0.25)]||1;
+      const q2=nonZero[Math.floor(nonZero.length*0.5)]||2;
+      const q3=nonZero[Math.floor(nonZero.length*0.75)]||3;
+      function getLevel(count){
+        if(count<=0) return 0;
+        if(count<=q1) return 1;
+        if(count<=q2) return 2;
+        if(count<=q3) return 3;
+        return 4;
+      }
       const now=new Date();
-      const sixMonthsAgo=new Date(now);
-      sixMonthsAgo.setMonth(sixMonthsAgo.getMonth()-6);
-      const recent=contribs.filter(c=>{
-        const d=new Date(c.date+'T00:00:00Z');
-        return d>=sixMonthsAgo;
-      });
-      const maxCount=Math.max(1,...recent.map(c=>c.count));
-      const byDate=new Map(recent.map(c=>[c.date,c]));
-      const start=new Date(sixMonthsAgo);
-      start.setUTCDate(start.getUTCDate()-start.getUTCDay());
       const end=new Date(now);
       end.setUTCDate(end.getUTCDate()+(6-end.getUTCDay()));
+      const start=new Date(end);
+      start.setUTCFullYear(start.getUTCFullYear()-1);
+      start.setUTCDate(start.getUTCDate()-start.getUTCDay());
       const cells=[];
       for(let d=new Date(start);d<=end;d.setUTCDate(d.getUTCDate()+1)){
         const key=d.toISOString().slice(0,10);
         const c=byDate.get(key);
         const count=c?c.count:0;
-        let level=0;
-        if(count>0) level=Math.min(4,Math.max(1,Math.ceil((count/maxCount)*4)));
-        cells.push({date:key,count,level});
+        cells.push({date:key,count,level:getLevel(count)});
       }
       const weeks=[];
       for(let i=0;i<cells.length;i+=7) weeks.push(cells.slice(i,i+7));
