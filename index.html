@@ -205,11 +205,10 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .gh-title a:hover{opacity:.7}
 .gh-legend{display:flex;align-items:center;gap:.5rem;font-size:.6rem;color:var(--mt);letter-spacing:.12em;text-transform:uppercase}
 .gh-legend-cells{display:flex;gap:3px}
-.gh-legend-cell{width:13px;height:13px;border-radius:3px}
-.gh-grid{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;padding:.5rem 0}
-.gh-grid::-webkit-scrollbar{display:none}
-.gh-col{display:flex;flex-direction:column;gap:3px}
-.gh-cell{width:13px;height:13px;border-radius:3px;transition:transform .2s var(--ease-expo),box-shadow .2s}
+.gh-legend-cell{width:12px;height:12px;border-radius:2px}
+.gh-grid{display:flex;gap:2px;overflow:hidden;padding:.5rem 0}
+.gh-col{display:flex;flex-direction:column;gap:2px;flex:1 1 0;min-width:0}
+.gh-cell{width:100%;aspect-ratio:1;border-radius:2px;transition:transform .2s var(--ease-expo),box-shadow .2s}
 .gh-cell:hover{transform:scale(1.6);z-index:1;box-shadow:0 0 8px rgba(202,255,0,.3)}
 
 /* ── SKILLS ─────────────────────────────── */
