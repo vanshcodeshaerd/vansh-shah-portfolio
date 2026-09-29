@@ -390,15 +390,9 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
       <div class="hero-portrait" id="hero-portrait">
         <div class="hero-bubble" id="hero-bubble"><span>Hey, it's me</span> 👋<i></i></div>
         <div class="hero-portrait-tilt" id="hero-portrait-tilt">
-          <figure class="liquid-figure" data-liquid data-scale="28">
-            <svg width="0" height="0" style="position:absolute">
-              <filter id="liq-hero">
-                <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" result="noise"/>
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/>
-              </filter>
-            </svg>
+          <figure class="liquid-figure">
             <div class="placeholder-bg"></div>
-            <img src="photo.jpg" alt="Vansh Shah" onerror="this.style.display='none'" style="filter:url(#liq-hero);object-position:center top">
+            <img src="photo.jpg" alt="Vansh Shah" onerror="this.style.display='none'" style="object-position:center top">
             <div class="vignette"></div>
             <div class="veil"></div>
             <div class="glow"></div>
