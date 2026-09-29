@@ -186,7 +186,10 @@ nav.s{background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:bl
 .ab-bio{font-size:clamp(1.05rem,1.8vw,1.45rem);line-height:1.7;color:var(--mt)}
 .ab-bio strong{color:var(--text);font-weight:600}
 .ab-bio em{color:var(--ac);font-style:italic;font-weight:600}
-.ab-g{display:grid;grid-template-columns:5fr 7fr;gap:8rem;align-items:start}
+.ab-g{display:grid;grid-template-columns:5fr 7fr;gap:3rem 8rem;align-items:start}
+.ab-g-left{grid-column:1;grid-row:1}
+.ab-g-right{grid-column:2;grid-row:1/3}
+.ab-g .gh-wrap{grid-column:1;grid-row:2;margin-top:0}
 .sstats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);border:1px solid var(--bd);margin-top:3.5rem}
 .sstat{background:var(--bg);padding:2rem;transition:background .25s}
 .sstat:hover{background:#0a0a0a}
@@ -350,6 +353,7 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
   .hname{font-size:clamp(3rem,15vw,7rem)}
   .hbtns{flex-wrap:wrap;gap:.6rem}
   .ab-g{grid-template-columns:1fr;gap:3rem}
+  .ab-g-left,.ab-g-right,.ab-g .gh-wrap{grid-column:1;grid-row:auto}
   .sstats{grid-template-columns:1fr 1fr}
   .sk-cat{grid-template-columns:1fr;gap:1rem;padding:1.8rem 0}
   .pf{grid-template-columns:1fr}
@@ -556,10 +560,10 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
 
   <!-- Detailed info + stats -->
   <div class="ab-g">
-    <div>
+    <div class="ab-g-left">
       <h2 class="big rv d2">Builder,<br>Leader,<br><em>Engineer</em></h2>
     </div>
-    <div>
+    <div class="ab-g-right">
       <p class="bt rv d2">I'm curious by default. I build <strong>AI/ML systems, full-stack applications, and developer tools</strong>. I love starting with an idea, asking <em>"what if?"</em>, and seeing where it takes me. Sometimes that means building something, sometimes leading a team, sometimes bringing a community together — and sometimes simply learning something I've never tried before.</p>
       <p class="bt rv d3">Currently exploring <strong>edge deployment, AWS serverless architectures, and LLM-powered applications</strong>. I care about <strong>creating, connecting, and growing</strong>. I enjoy working with people, taking on challenges that seem slightly too ambitious, and turning those experiences into something meaningful.</p>
       <p class="bt rv d4">I'm still figuring out where the journey takes me — but I'm having a lot of fun building along the way.</p>
@@ -569,25 +573,24 @@ footer{border-top:1px solid var(--bd);padding:2rem 4rem;display:flex;align-items
         <div class="sstat"><div class="sstat-n" data-count="44">0</div><div class="sstat-l">Hackathon Teams Led</div></div>
         <div class="sstat"><div class="sstat-n" style="font-size:2rem">∞</div><div class="sstat-l">Curiosity</div></div>
       </div>
-
-      <!-- GitHub Contribution Graph -->
-      <div class="gh-wrap rv d6">
-        <div class="gh-header">
-          <div class="gh-title"><a href="https://github.com/vanshcodeshaerd" target="_blank" rel="noopener">@vanshcodeshaerd</a> on GitHub</div>
-          <div class="gh-legend">
-            <span>Less</span>
-            <div class="gh-legend-cells">
-              <div class="gh-legend-cell" style="background:var(--s2)"></div>
-              <div class="gh-legend-cell" style="background:rgba(202,255,0,.2)"></div>
-              <div class="gh-legend-cell" style="background:rgba(202,255,0,.45)"></div>
-              <div class="gh-legend-cell" style="background:rgba(202,255,0,.7)"></div>
-              <div class="gh-legend-cell" style="background:var(--ac)"></div>
-            </div>
-            <span>More</span>
+    </div>
+    <!-- GitHub Contribution Graph -->
+    <div class="gh-wrap rv d6">
+      <div class="gh-header">
+        <div class="gh-title"><a href="https://github.com/vanshcodeshaerd" target="_blank" rel="noopener">@vanshcodeshaerd</a> on GitHub</div>
+        <div class="gh-legend">
+          <span>Less</span>
+          <div class="gh-legend-cells">
+            <div class="gh-legend-cell" style="background:var(--s2)"></div>
+            <div class="gh-legend-cell" style="background:rgba(202,255,0,.2)"></div>
+            <div class="gh-legend-cell" style="background:rgba(202,255,0,.45)"></div>
+            <div class="gh-legend-cell" style="background:rgba(202,255,0,.7)"></div>
+            <div class="gh-legend-cell" style="background:var(--ac)"></div>
           </div>
+          <span>More</span>
         </div>
-        <div class="gh-grid" id="gh-grid"></div>
       </div>
+      <div class="gh-grid" id="gh-grid"></div>
     </div>
   </div>
 </section>
